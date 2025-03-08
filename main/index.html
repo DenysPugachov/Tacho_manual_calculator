@@ -13,30 +13,32 @@
     <h3>Калькулятор мануального ввода</h3>
 
     <label>1. Когда вытащил карту из тахографа?</label>
-    <input type="datetime-local" id="lastPullCardOutEventTime" onchange="calculateTimes()">
+    <input type="datetime-local" id="cardOutTime" onchange="calculateTimes()">
 
     <hr>
 
     <label>2. Сколько времени занял доезд от Грузовика до Дома?</label>
-    <input type="text" id="dutyTirToHomeDuration" placeholder="3:30" oninput="calculateTimes()">
-    <input type="text" id="dutyTirToHomeDuration" placeholder="Конец страны PL  " oninput="calculateTimes()">
+    <input type="text" id="dutyTruckToHomeDuration" placeholder="3:30" oninput="calculateTimes()">
+    <input type="text" id="endOfCountryTruckToHome" placeholder="Конец страны PL" oninput="calculateTimes()">
 
+    <hr>
+    <h4>Отдых будет дома будет расчитан автоматически </h4>
     <hr>
 
     <label>3. Сколько времени занял доезд от Дома до Грузовика?</label>
-    <input type="text" id="dutyTirToHomeDuration" placeholder="Начало страны PL  " oninput="calculateTimes()">
-    <input type="text" id="dutyTirToHomeDuration" placeholder="4" oninput="calculateTimes()">
+    <input type="text" id="beginOfCountryHomeToTruck" placeholder="Начало страны PL" oninput="calculateTimes()">
+    <input type="text" id="dutyHomeToTruckDuration" placeholder="4:00" oninput="calculateTimes()">
 
     <hr>
 
-    <label>4. Когда вставил карту в тахограф? (сегодня/сейчас)</label>
-    <input type="datetime-local" id="lastPullCardOutEventTime" onchange="calculateTimes()">
+    <label>4. Когда вставил карту в тахограф? (сегодня, сейчас)</label>
+    <input type="datetime-local" id="cardInTime" onchange="calculateTimes()">
 
     <hr>
 
-    <button onclick="saveEntry()">Расчитать время</button>
+    <button onclick="saveEntry()">Расчитать время для тахо</button>
 
-    <h3>Данные для тахографа:</h3>
+    <h3>Данные для ввода в тахограф:</h3>
     <div class="log-output" id="logOutput"></div>
   </div>
 
