@@ -9,14 +9,14 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="container kletka">
     <h2>Калькулятор мануального ввода</h2>
 
-    <label>Last Event Time (Today) - Enter Manually</label>
-    <input type="datetime-local" id="lastEventTime" onchange="calculateTimes()">
+    <label>1. Когда вытащил карту из тахографа</label>
+    <input type="datetime-local" id="lastPullCardOutEventTime" onchange="calculateTimes()">
 
-    <label>Step 6: Other Work (доезд до грузовика) - Duration (hh:mm)</label>
-    <input type="text" id="truckDuration" placeholder="e.g. 5:30" oninput="calculateTimes()">
+    <label>2. Доезд от грузовика до базы (от 1 до 15 часов)</label>
+    <input type="text" id="dutyToBazaDuration" placeholder="e.g. 5:30" oninput="calculateTimes()">
     <input type="datetime-local" id="truckEnd" disabled>
 
     <label>Step 5: Start Country (начало страны) - Duration (hh:mm)</label>
@@ -44,7 +44,7 @@
     <div class="log-output" id="logOutput"></div>
   </div>
 
-<script src="js.js"></script>
+  <script src="js.js"></script>
 </body>
 
 </html>

@@ -1,20 +1,20 @@
 function calculateTimes() {
-  let lastEventTime = document.getElementById("lastEventTime").value;
-  if (!lastEventTime) return;
+  let lastPullCardOutEventTime = document.getElementById("lastPullCardOutEventTime").value;
+  if (!lastPullCardOutEventTime) return;
 
-  lastEventTime = new Date(lastEventTime);
+  lastPullCardOutEventTime = new Date(lastPullCardOutEventTime);
 
   function subtractDuration(id, durationId) {
     const duration = document.getElementById(durationId).value;
     if (!duration) return null;
 
     const [hours, minutes] = duration.split(":").map(Number);
-    lastEventTime.setHours(lastEventTime.getHours() - hours);
-    lastEventTime.setMinutes(lastEventTime.getMinutes() - minutes);
+    lastPullCardOutEventTime.setHours(lastPullCardOutEventTime.getHours() - hours);
+    lastPullCardOutEventTime.setMinutes(lastPullCardOutEventTime.getMinutes() - minutes);
 
-    const formattedDate = lastEventTime.toISOString().slice(0, 16);
+    const formattedDate = lastPullCardOutEventTime.toISOString().slice(0, 16);
     document.getElementById(id).value = formattedDate;
-    return lastEventTime;
+    return lastPullCardOutEventTime;
   }
 
   subtractDuration("truckEnd", "truckDuration");
