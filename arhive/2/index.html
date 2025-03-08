@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tachograph Log Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      max-width: 500px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input,
+    select,
+    button {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Tachograph Log Form</h2>
+
+    <label>Last Event Time (Today) - Enter Manually</label>
+    <input type="datetime-local" id="lastEventTime" onchange="calculateTimes()">
+
+    <label>Step 6: Other Work (доезд до грузовика) - Duration (hh:mm)</label>
+    <input type="text" id="truckDuration" placeholder="e.g. 5:30" oninput="calculateTimes()">
+    <input type="datetime-local" id="truckEnd" disabled>
+
+    <label>Step 5: Start Country (начало страны) - Duration (hh:mm)</label>
+    <input type="text" id="startCountryDuration" placeholder="e.g. 0:05" oninput="calculateTimes()">
+    <input type="datetime-local" id="startCountryTime" disabled>
+
+    <label>Step 4: Rest (пауза) - Duration (hh:mm)</label>
+    <input type="text" id="restDuration" placeholder="e.g. 9:00" oninput="calculateTimes()">
+    <input type="datetime-local" id="restEnd" disabled>
+
+    <label>Step 3: End Country (конец страны) - Duration (hh:mm)</label>
+    <input type="text" id="endCountryDuration" placeholder="e.g. 0:05" oninput="calculateTimes()">
+    <input type="datetime-local" id="endCountryTime" disabled>
+
+    <label>Step 2: Other Work (доезд до базы) - Duration (hh:mm)</label>
+    <input type="text" id="workDuration" placeholder="e.g. 2:30" oninput="calculateTimes()">
+    <input type="datetime-local" id="workEnd" disabled>
+
+    <label>Step 1: First Event (Manually Entered)</label>
+    <input type="datetime-local" id="workStart">
+
+    <button onclick="saveEntry()">Save Entry</button>
+  </div>
+
+  <script>
+    function calculateTimes() {
+      let lastEventTime = document.getElementById("lastEventTime").value;
+      if (!lastEventTime) return;
+
+      lastEventTime = new Date(lastEventTime);
+
+      function subtractDuration(id, durationId) {
+        const duration = document.getElementById(durationId).value;
+        if (!duration) return null;
+
+        const [hours, minutes] = duration.split(":").map(Number);
+        lastEventTime.setHours(lastEventTime.getHours() - hours);
+        lastEventTime.setMinutes(lastEventTime.getMinutes() - minutes);
+
+        const formattedDate = lastEventTime.toISOString().slice(0, 16);
+        document.getElementById(id).value = formattedDate;
+        return lastEventTime;
+      }
+
+      subtractDuration("truckEnd", "truckDuration");
+      subtractDuration("startCountryTime", "startCountryDuration");
+      subtractDuration("restEnd", "restDuration");
+      subtractDuration("endCountryTime", "endCountryDuration");
+      subtractDuration("workEnd", "workDuration");
+    }
+
+    function saveEntry() {
+      alert("Entry saved successfully!");
+      localStorage.setItem("tachographLog", JSON.stringify({
+        lastEventTime: document.getElementById("lastEventTime").value,
+        truckEnd: document.getElementById("truckEnd").value,
+        startCountryTime: document.getElementById("startCountryTime").value,
+        restEnd: document.getElementById("restEnd").value,
+        endCountryTime: document.getElementById("endCountryTime").value,
+        workEnd: document.getElementById("workEnd").value,
+        workStart: document.getElementById("workStart").value
+      }));
+    }
+
+    if (!localStorage.getItem("loggedIn")) {
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+
+</html>

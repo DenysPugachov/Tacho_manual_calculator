@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tachograph Log Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      max-width: 500px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input,
+    select,
+    button {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Tachograph Log Form</h2>
+
+    <label>Step 1: Other Work (доезд до базы)</label>
+    <input type="datetime-local" id="workStart">
+    <input type="datetime-local" id="workEnd" disabled>
+
+    <label>Step 2: End Country (конец страны)</label>
+    <input type="datetime-local" id="endCountryTime" disabled>
+
+    <label>Step 3: Rest (пауза)</label>
+    <input type="datetime-local" id="restStart" disabled>
+    <input type="datetime-local" id="restEnd" disabled>
+
+    <label>Step 4: Start Country (начало страны)</label>
+    <input type="datetime-local" id="startCountryTime" disabled>
+
+    <label>Step 5: Other Work (доезд до грузовика)</label>
+    <input type="datetime-local" id="truckStart" disabled>
+    <input type="datetime-local" id="truckEnd" disabled>
+
+    <label>Step 6: Start Country in Truck (начало страны в грузовике)</label>
+    <input type="datetime-local" id="truckCountryStart" disabled>
+
+    <button onclick="saveEntry()">Save Entry</button>
+  </div>
+
+  <script>
+    function validateStep(prevId, currentId) {
+      const prev = document.getElementById(prevId);
+      const current = document.getElementById(currentId);
+      if (prev.value !== "") {
+        current.disabled = false;
+      } else {
+        current.disabled = true;
+      }
+    }
+
+    document.getElementById("workEnd").addEventListener("change", () => validateStep("workEnd", "endCountryTime"));
+    document.getElementById("endCountryTime").addEventListener("change", () => validateStep("endCountryTime", "restStart"));
+    document.getElementById("restEnd").addEventListener("change", () => validateStep("restEnd", "startCountryTime"));
+    document.getElementById("startCountryTime").addEventListener("change", () => validateStep("startCountryTime", "truckStart"));
+    document.getElementById("truckEnd").addEventListener("change", () => validateStep("truckEnd", "truckCountryStart"));
+
+    function saveEntry() {
+      alert("Entry saved successfully!");
+      localStorage.setItem("tachographLog", JSON.stringify({
+        workStart: document.getElementById("workStart").value,
+        workEnd: document.getElementById("workEnd").value,
+        endCountryTime: document.getElementById("endCountryTime").value,
+        restStart: document.getElementById("restStart").value,
+        restEnd: document.getElementById("restEnd").value,
+        startCountryTime: document.getElementById("startCountryTime").value,
+        truckStart: document.getElementById("truckStart").value,
+        truckEnd: document.getElementById("truckEnd").value,
+        truckCountryStart: document.getElementById("truckCountryStart").value
+      }));
+    }
+
+    // Ensure login
+    if (!localStorage.getItem("loggedIn")) {
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+
+</html>
