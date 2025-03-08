@@ -10,37 +10,33 @@
 
 <body>
   <div class="container kletka">
-    <h2>Калькулятор мануального ввода</h2>
+    <h3>Калькулятор мануального ввода</h3>
 
-    <label>1. Когда вытащил карту из тахографа</label>
+    <label>1. Когда вытащил карту из тахографа?</label>
     <input type="datetime-local" id="lastPullCardOutEventTime" onchange="calculateTimes()">
 
-    <label>2. Доезд от грузовика до базы (от 1 до 15 часов)</label>
-    <input type="text" id="dutyToBazaDuration" placeholder="e.g. 5:30" oninput="calculateTimes()">
-    <input type="datetime-local" id="truckEnd" disabled>
+    <hr>
 
-    <label>Step 5: Start Country (начало страны) - Duration (hh:mm)</label>
-    <input type="text" id="startCountryDuration" placeholder="e.g. 0:05" oninput="calculateTimes()">
-    <input type="datetime-local" id="startCountryTime" disabled>
+    <label>2. Сколько времени занял доезд от Грузовика до Дома?</label>
+    <input type="text" id="dutyTirToHomeDuration" placeholder="3:30" oninput="calculateTimes()">
+    <input type="text" id="dutyTirToHomeDuration" placeholder="Конец страны PL  " oninput="calculateTimes()">
 
-    <label>Step 4: Rest (пауза) - Duration (hh:mm)</label>
-    <input type="text" id="restDuration" placeholder="e.g. 9:00" oninput="calculateTimes()">
-    <input type="datetime-local" id="restEnd" disabled>
+    <hr>
 
-    <label>Step 3: End Country (конец страны) - Duration (hh:mm)</label>
-    <input type="text" id="endCountryDuration" placeholder="e.g. 0:05" oninput="calculateTimes()">
-    <input type="datetime-local" id="endCountryTime" disabled>
+    <label>3. Сколько времени занял доезд от Дома до Грузовика?</label>
+    <input type="text" id="dutyTirToHomeDuration" placeholder="Начало страны PL  " oninput="calculateTimes()">
+    <input type="text" id="dutyTirToHomeDuration" placeholder="4" oninput="calculateTimes()">
 
-    <label>Step 2: Other Work (доезд до базы) - Duration (hh:mm)</label>
-    <input type="text" id="workDuration" placeholder="e.g. 2:30" oninput="calculateTimes()">
-    <input type="datetime-local" id="workEnd" disabled>
+    <hr>
 
-    <label>Step 1: First Event (Manually Entered)</label>
-    <input type="datetime-local" id="workStart">
+    <label>4. Когда вставил карту в тахограф? (сегодня/сейчас)</label>
+    <input type="datetime-local" id="lastPullCardOutEventTime" onchange="calculateTimes()">
 
-    <button onclick="saveEntry()">Save Entry</button>
+    <hr>
 
-    <h3>Generated Log</h3>
+    <button onclick="saveEntry()">Расчитать время</button>
+
+    <h3>Данные для тахографа:</h3>
     <div class="log-output" id="logOutput"></div>
   </div>
 
