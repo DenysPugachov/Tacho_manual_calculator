@@ -1,18 +1,12 @@
 document.getElementById("calculate_btn").addEventListener("click", function () {
 
-  // Set default values
-  document.getElementById("input_2.2").value = document.getElementById("input_2.2").value || "PL";
-  document.getElementById("input_3.1").value = document.getElementById("input_3.1").value || "PL";
-  document.getElementById("input_3.2").value = document.getElementById("input_3.2").value || 5;
-  document.getElementById("input_2.1").value = document.getElementById("input_2.1").value || 4;
-
-  // Get input values
+  // Get input values + Set default values
   let input_1 = document.getElementById("input_1").value;
-  let input_2_1 = document.getElementById("input_2.1").value;
-  let input_2_2 = document.getElementById("input_2.2").value;
-  let input_3_1 = document.getElementById("input_3.1").value;
-  let input_3_2 = document.getElementById("input_3.2").value;
-  let input_4 = document.getElementById("input_4").value || new Date();
+  let input_2_1 = document.getElementById("input_2.1").value || 4;
+  let input_2_2 = document.getElementById("input_2.2").value || "PL";
+  let input_3_1 = document.getElementById("input_3.1").value || "PL";
+  let input_3_2 = document.getElementById("input_3.2").value || 5;
+  let input_4 = document.getElementById("input_4").value || new Date(); // set default date now;
 
   // Convert datetime values to Date objects
   let dateInput_1 = new Date(input_1);
