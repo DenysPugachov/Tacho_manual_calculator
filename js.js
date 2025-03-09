@@ -1,53 +1,44 @@
-function calculateTimes() {
-  let cardOutTime = document.getElementById("cardOutTime").value;
-  if (!cardOutTime) return;
+document.getElementById("calculate_btb").addEventListener("click", function () {
+  // Get input values
+  let input_1 = document.getElementById("input_1").value;
+  let input_2_1 = document.getElementById("input_2.1").value;
+  let input_2_2 = document.getElementById("input_2.2").value;
+  let input_3_1 = document.getElementById("input_3.1").value;
+  let input_3_2 = document.getElementById("input_3.2").value;
+  let input_4 = document.getElementById("input_4").value;
 
-  cardOutTime = new Date(cardOutTime);
+  // Convert datetime values to Date objects
+  let dateInput_1 = new Date(input_1);
+  let dateInput_4 = new Date(input_4);
 
-  function subtractDuration(id, durationId) {
-    const duration = document.getElementById(durationId).value;
-    if (!duration) return null;
-
-    const [hours, minutes] = duration.split(":").map(Number);
-    cardOutTime.setHours(cardOutTime.getHours() - hours);
-    cardOutTime.setMinutes(cardOutTime.getMinutes() - minutes);
-
-    const formattedDate = cardOutTime.toISOString().slice(0, 16);
-    document.getElementById(id).value = formattedDate;
-    return cardOutTime;
+  // Convert duration inputs (hh:mm) to milliseconds
+  function parseDuration(timeStr) {
+    let [hours, minutes] = timeStr.split(":").map(Number);
+    return (hours * 60 + minutes) * 60 * 1000;
   }
 
-  subtractDuration("truckEnd", "truckDuration");
-  subtractDuration("startCountryTime", "startCountryDuration");
-  subtractDuration("restEnd", "restDuration");
-  subtractDuration("endCountryTime", "endCountryDuration");
-  subtractDuration("workEnd", "workDuration");
-}
+  let duration_2_1 = parseDuration(input_2_1);
+  let duration_3_2 = parseDuration(input_3_2);
 
-function saveEntry() {
-  const entries = [
-    { time: document.getElementById("lastEventTime").value, text: "Вставил карту в тахограф - начало страны" },
-    { time: document.getElementById("truckEnd").value, text: "Доезд от базы до грузовика" },
-    { time: document.getElementById("startCountryTime").value, text: "Начало страны PL" },
-    { time: document.getElementById("restEnd").value, text: "Отдых" },
-    { time: document.getElementById("endCountryTime").value, text: "Конец страны PL" },
-    { time: document.getElementById("workEnd").value, text: "Доезд от грузовика до базы" },
-    { time: document.getElementById("workStart").value, text: "Изъял карту из тахографа" },
-  ];
+  // Calculate output values
+  document.getElementById("out_1").textContent = input_1;
 
-  // Sort in chronological order (earliest first)
-  entries.sort((a, b) => new Date(a.time) - new Date(b.time));
+  document.getElementById("out_2.1").textContent = input_1;
+  let out_2_2_date = new Date(dateInput_1.getTime() + duration_2_1);
+  document.getElementById("out_2.2").textContent = out_2_2_date.toISOString().slice(0, 16).replace("T", " ");
 
-  // Format output
-  let output = "";
-  entries.forEach(entry => {
-    if (entry.time) {
-      const date = new Date(entry.time);
-      output += `${date.toLocaleDateString()} ${date.toLocaleTimeString()}  ${entry.text}\n`;
-    }
-  });
+  document.getElementById("out_3.1").textContent = document.getElementById("out_2.2").textContent;
+  document.getElementById("out_3.2").textContent = input_2_2;
 
-  document.getElementById("logOutput").innerText = output;
+  document.getElementById("out_4.1").textContent = input_2_2;
+  document.getElementById("out_4.2").textContent = document.getElementById("out_6.1").textContent;
 
-}
+  document.getElementById("out_5.1").textContent = document.getElementById("out_6.1").textContent;
+  document.getElementById("out_5.2").textContent = input_3_1;
 
+  let out_6_1_date = new Date(dateInput_4.getTime() - duration_3_2);
+  document.getElementById("out_6.1").textContent = out_6_1_date.toISOString().slice(0, 16).replace("T", " ");
+  document.getElementById("out_6.2").textContent = input_4;
+
+  document.getElementById("out_7").textContent = input_4;
+});

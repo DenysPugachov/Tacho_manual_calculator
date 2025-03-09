@@ -13,100 +13,99 @@
     <h3>Калькулятор мануального ввода</h3>
 
     <label>1. Когда вытащил карту из тахографа?</label>
-    <input type="datetime-local" id="cardOutTime" onchange="calculateTimes()">
+    <input id="input_1" type="datetime-local" onchange="calculateTimes()">
 
     <hr>
 
-    <label>2. Сколько часов занял доезд от Грузовика до Базы? + Конец страны на Базе?</label>
-    <input type="text" id="dutyTruckToHomeDuration" placeholder="3:30" oninput="calculateTimes()">
+    <label>2. Сколько часов занял доезд от Грузовика до Базы?</label>
+    <input id="input_2.1" type="text" placeholder="3:30" oninput="calculateTimes()">
     <label>В какой стране находится База? (Конец страны)</label>
-    <input type="text" id="endOfCountryTruckToHome" placeholder="Конец страны PL" oninput="calculateTimes()">
+    <input id="input_2.2" type="text" placeholder="Конец страны PL" oninput="calculateTimes()">
 
     <hr>
     <h4>Отдых будет Дома будет расчитан автоматически </h4>
     <hr>
 
-    <label>База - страна в начале смены ? (Начало страны)</label>
-    <input type="text" id="beginOfCountryHomeToTruck" placeholder="Начало страны PL" oninput="calculateTimes()">
+    <label>В какой стране находится База? (Начало страны)</label>
+    <input id="input_3.1" type="text" placeholder="Начало страны PL" oninput="calculateTimes()">
     <label>3. Сколько часов занял доезд от Базы до Грузовика?</label>
-    <input type="text" id="dutyHomeToTruckDuration" placeholder="4:00" oninput="calculateTimes()">
+    <input id="input_3.2" type="text" placeholder="4:00" oninput="calculateTimes()">
 
     <hr>
 
     <label>4. Когда вставил карту в тахограф? (сегодня, сейчас)</label>
-    <input type="datetime-local" id="cardInTime" onchange="calculateTimes()">
+    <input id="input_4" type="datetime-local" onchange="calculateTimes()">
 
     <hr>
 
-    <button onclick="saveEntry()">Расчитать время для тахо</button>
+    <button id="calculate_btb" onclick="saveEntry()">Расчитать время для тахо</button>
 
     <h3>Данные для ввода в тахограф:</h3>
     <!-- <div class="log-output" id="logOutput"></div> -->
 
     <div class="log-container">
 
-      <div class="log">
-        <span class="log__date">20.02.2025 20:45 - Изъял карту из тахографа; </span>
+      <div class="log__block info">
+        <span id="out_1" class="log__date">20.07.2023 20:32 </span>
+        <p>- Изъял карту из тахографа;</p>
       </div>
 
       <hr>
 
-      <div class="log">
+      <div class="log__block">
         <img class="log__symbol" src="./image/tacho_symbols/duty.png" alt="Конверт">
         <div class="log__date">
-          <p>21.02.2025 22:00 </p>
-          <p>21.02.2025 23:50 </p>
-          <!-- <div class="__text">
-            - доезд от Грузовика до Базы;
-          </div> -->
+          <p id="out_2.1">20.07.2023 20:32 </p>
+          <p id="out_2.2">20.07.2023 23:00 </p>
         </div>
       </div>
 
       <hr>
 
-      <div class="log">
+      <div class="log__block">
         <img class="log__symbol" src="./image/tacho_symbols/end_country.png" alt="отдых">
         <div class="log__date">
-          <p>21.02.2025 22:00 </p>
-          <p>Конец страны PL</p>
+          <p id="out_3.1">20.07.2023 23:00 </p>
+          <p id="out_3.2">Конец страны PL </p>
         </div>
       </div>
 
       <hr>
 
-      <div class="log">
+      <div class="log__block">
         <img class="log__symbol" src="./image/tacho_symbols/rest.png" alt="Конверт">
         <div class="log__date">
-          <p>21.02.2025 22:00 </p>
-          <p>21.02.2025 23:50 </p>
+          <p id="out_4.1">20.07.2023 23:00 </p>
+          <p id="out_4.2">30.07.2023 05:00 </p>
         </div>
       </div>
 
 
       <hr>
 
-      <div class="log">
+      <div class="log__block">
         <img class="log__symbol" src="./image/tacho_symbols/begin_country.png" alt="отдых">
         <div class="log__date">
-          <p>21.02.2025 22:00 </p>
-          <p>Начало страны PL</p>
+          <p id="out_5.1">30.07.2023 05:00 </p>
+          <p id="out_5.2">Начало страны PL</p>
         </div>
       </div>
 
       <hr>
 
-      <div class="log">
+      <div class="log__block">
         <img class="log__symbol" src="./image/tacho_symbols/duty.png" alt="Конверт">
         <div class="log__date">
-          <p>21.02.2025 22:00 </p>
-          <p>21.02.2025 23:50 </p>
+          <p id="out_6.1">30.07.2023 05:00 </p>
+          <p id="out_6.2">30.07.2023 10:30 </p>
         </div>
       </div>
 
       <hr>
 
-      <div class="log">
-        <span class="log__date">20.02.2025 20:45 - Вставил карту в тахограф и выбрал Начало страны ...; </span>
+      <div class="log__block info">
+        <span id="out_7" class="log__date">20.02.2025 20:45</span>
+        <p>- Вставил карту в тахограф и выбрал Начало страны ...;</p>
       </div>
 
 

@@ -49,11 +49,16 @@ hr {
 }
 
 
-.log {
+.log__block {
   font-size: 25px;
   display: flex;
   align-items: left;
   border-bottom: 1px solid #ddd;
+}
+
+.log__block.info{
+  /* font-family:cursive; */
+  font-size:30px;
 }
 
 .log__symbol {
