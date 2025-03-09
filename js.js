@@ -12,7 +12,7 @@ document.getElementById("calculate_btn").addEventListener("click", function () {
   let input_2_2 = document.getElementById("input_2.2").value;
   let input_3_1 = document.getElementById("input_3.1").value;
   let input_3_2 = document.getElementById("input_3.2").value;
-  let input_4 = document.getElementById("input_4").value;
+  let input_4 = document.getElementById("input_4").value || new Date();
 
   // Convert datetime values to Date objects
   let dateInput_1 = new Date(input_1);

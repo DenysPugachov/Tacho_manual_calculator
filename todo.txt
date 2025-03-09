@@ -1,4 +1,4 @@
-1.  Set default input date insert card for tooday;
+Done v0.5.0 -  1. Set default input date insert card for tooday;
 
 2. Change id name in html and variables names in js;
 
