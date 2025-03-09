@@ -1,4 +1,4 @@
-document.getElementById("calculate_btb").addEventListener("click", function () {
+document.getElementById("calculate_btn").addEventListener("click", function () {
 
   // Set default values
   document.getElementById("input_2.2").value = document.getElementById("input_2.2").value || "PL";
