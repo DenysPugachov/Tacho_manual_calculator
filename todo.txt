@@ -1,0 +1,14 @@
+1.  Set default input date insert card for tooday;
+
+2. Change id name in html and variables names in js;
+
+3. Calculate "Отпуск" days + hours and render it in logs;
+
+4. Refactor project ot React;
+
+5. Add input verification;
+
+6. Implement loggin form;
+
+7. Add metrics to count users;
+
