@@ -33,6 +33,9 @@ document.getElementById("calculate_btn").addEventListener("click", function () {
 
   let out_2_2_date = new Date(dateInput_1.getTime() + duration_2_1);
   let out_6_1_date = new Date(dateInput_4.getTime() - duration_3_2);
+  const restMs = out_6_1_date - out_2_2_date;
+  const restDays = Math.floor(restMs / (1000 * 60 * 60 * 24));
+
 
   // Calculate output values
   document.getElementById("out_1").textContent = formatDate(dateInput_1);
@@ -53,4 +56,7 @@ document.getElementById("calculate_btn").addEventListener("click", function () {
   document.getElementById("out_6.2").textContent = formatDate(dateInput_4);
 
   document.getElementById("out_7").textContent = formatDate(dateInput_4);
+
+  document.getElementById("restDaysId").textContent = restDays;
+
 });

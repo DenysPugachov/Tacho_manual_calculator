@@ -1,14 +1,23 @@
-Done v0.5.0 -  1. Set default input date insert card for tooday;
+=============In progess==============================
 
-2. Change id name in html and variables names in js;
 
-3. Calculate "Отпуск" days + hours and render it in logs;
 
-4. Refactor project ot React;
 
-5. Add input verification;
+================TODO================================
 
-6. Implement loggin form;
+ Change id name in html and variables names in js;
 
-7. Add metrics to count users;
+ Refactor project ot React;
 
+ Add input verification;
+
+ Implement loggin form;
+
+ Add metrics to count users;
+
+
+
+=========Done======================================
+
+v0.5.0  -  Set default input date insert card for tooday;
+v0.6.0  -  Calculate "Отпуск" days + hours and render it in logs;
