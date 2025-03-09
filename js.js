@@ -47,14 +47,14 @@ document.getElementById("calculate_btn").addEventListener("click", function () {
   document.getElementById("out_3.1").textContent = document.getElementById("out_2.2").textContent;
   document.getElementById("out_3.2").textContent = input_2_2;
 
-  document.getElementById("out_4.1").textContent = input_2_2;
-  document.getElementById("out_4.2").textContent = document.getElementById("out_6.1").textContent;
+  document.getElementById("out_4.1").textContent = document.getElementById("out_2.2").textContent;
 
-  document.getElementById("out_5.1").textContent = document.getElementById("out_6.1").textContent;
   document.getElementById("out_5.2").textContent = input_3_1;
 
   let out_6_1_date = new Date(dateInput_4.getTime() - duration_3_2);
   document.getElementById("out_6.1").textContent = formatDate(out_6_1_date);
+  document.getElementById("out_4.2").textContent = document.getElementById("out_6.1").textContent;
+  document.getElementById("out_5.1").textContent = document.getElementById("out_6.1").textContent;
   document.getElementById("out_6.2").textContent = formatDate(dateInput_4);
 
   document.getElementById("out_7").textContent = formatDate(dateInput_4);

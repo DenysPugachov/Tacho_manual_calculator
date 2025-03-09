@@ -80,7 +80,6 @@ hr {
   display: flex;
   width: 100%;
   font-size: 25px;
-  border-bottom: 1px solid #ddd;
 }
 
 .log__symbol {
