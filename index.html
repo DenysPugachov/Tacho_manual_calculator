@@ -13,35 +13,34 @@
     <h3>Калькулятор мануального ввода</h3>
 
     <label>1. Когда вытащил карту из тахографа?</label>
-    <input id="input_1" type="datetime-local" onchange="calculateTimes()">
+    <input id="input_1" type="datetime-local">
 
     <hr>
 
     <label>2. Сколько часов занял доезд от Грузовика до Базы?</label>
-    <input id="input_2.1" type="text" placeholder="3:30" oninput="calculateTimes()">
+    <input id="input_2.1" type="text" placeholder="3:30">
     <label>В какой стране находится База? (Конец страны)</label>
-    <input id="input_2.2" type="text" placeholder="Конец страны PL" oninput="calculateTimes()">
+    <input id="input_2.2" type="text" placeholder="Конец страны PL">
 
     <hr>
     <h4>Отдых будет Дома будет расчитан автоматически </h4>
     <hr>
 
     <label>В какой стране находится База? (Начало страны)</label>
-    <input id="input_3.1" type="text" placeholder="Начало страны PL" oninput="calculateTimes()">
+    <input id="input_3.1" type="text" placeholder="Начало страны PL">
     <label>3. Сколько часов занял доезд от Базы до Грузовика?</label>
-    <input id="input_3.2" type="text" placeholder="4:00" oninput="calculateTimes()">
+    <input id="input_3.2" type="text" placeholder="4:00">
 
     <hr>
 
     <label>4. Когда вставил карту в тахограф? (сегодня, сейчас)</label>
-    <input id="input_4" type="datetime-local" onchange="calculateTimes()">
+    <input id="input_4" type="datetime-local">
 
     <hr>
 
-    <button id="calculate_btb" onclick="saveEntry()">Расчитать время для тахо</button>
+    <button id="calculate_btb">Расчитать время для тахо</button>
 
     <h3>Данные для ввода в тахограф:</h3>
-    <!-- <div class="log-output" id="logOutput"></div> -->
 
     <div class="log-container">
 
