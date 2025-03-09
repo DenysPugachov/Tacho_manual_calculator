@@ -3,8 +3,8 @@ document.getElementById("calculate_btn").addEventListener("click", function () {
   // Set default values
   document.getElementById("input_2.2").value = document.getElementById("input_2.2").value || "PL";
   document.getElementById("input_3.1").value = document.getElementById("input_3.1").value || "PL";
-  document.getElementById("input_3.2").value = document.getElementById("input_3.2").value || "5:00";
-  document.getElementById("input_2.1").value = document.getElementById("input_2.1").value || "4:00";
+  document.getElementById("input_3.2").value = document.getElementById("input_3.2").value || 5;
+  document.getElementById("input_2.1").value = document.getElementById("input_2.1").value || 4;
 
   // Get input values
   let input_1 = document.getElementById("input_1").value;
@@ -19,9 +19,9 @@ document.getElementById("calculate_btn").addEventListener("click", function () {
   let dateInput_4 = new Date(input_4);
 
   // Convert duration inputs (hh:mm) to milliseconds
-  function parseDuration(timeStr) {
-    let [hours, minutes] = timeStr.split(":").map(Number);
-    return (hours * 60 + minutes) * 60 * 1000;
+  function parseDuration(durationHours) {
+    // let [hours, minutes] = timeStr.split(":").map(Number);
+    return durationHours * 60 * 60 * 1000;
   }
 
   let duration_2_1 = parseDuration(input_2_1);
@@ -37,11 +37,13 @@ document.getElementById("calculate_btn").addEventListener("click", function () {
     return `${day}.${month}.${year} ${hours}:${minutes}`;
   }
 
+  let out_2_2_date = new Date(dateInput_1.getTime() + duration_2_1);
+  let out_6_1_date = new Date(dateInput_4.getTime() - duration_3_2);
+
   // Calculate output values
   document.getElementById("out_1").textContent = formatDate(dateInput_1);
 
   document.getElementById("out_2.1").textContent = formatDate(dateInput_1);
-  let out_2_2_date = new Date(dateInput_1.getTime() + duration_2_1);
   document.getElementById("out_2.2").textContent = formatDate(out_2_2_date);
 
   document.getElementById("out_3.1").textContent = document.getElementById("out_2.2").textContent;
@@ -51,7 +53,6 @@ document.getElementById("calculate_btn").addEventListener("click", function () {
 
   document.getElementById("out_5.2").textContent = input_3_1;
 
-  let out_6_1_date = new Date(dateInput_4.getTime() - duration_3_2);
   document.getElementById("out_6.1").textContent = formatDate(out_6_1_date);
   document.getElementById("out_4.2").textContent = document.getElementById("out_6.1").textContent;
   document.getElementById("out_5.1").textContent = document.getElementById("out_6.1").textContent;
